@@ -1,130 +1,105 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Laurène Ryckebusch</title>
-  <meta name="description" content="Portfolio de Laurène Ryckebusch – Direction artistique & design graphique." />
-
+  <title>Laurène Ryckebusch — Graphic Designer</title>
   <style>
-    :root {
-      --bg: #000;          /* fond noir */
-      --fg: #fff;          /* texte blanc */
-      --muted: #a0a0a0;    /* gris léger */
-      --link-underline: rgba(255,255,255,0.35); /* gris en overlay pour le hover */
+    :root{
+      --bg:#0a0a0a;
+      --text:#ffffff;
+      --hover:#bbbbbb; /* gris léger au survol */
+      --size: clamp(24px, 6.8vw, 94px);
+      --lh: 0.90;
+      --gap-blocks: 4vh;
+      --side: 2vw;
     }
 
-    /* Reset simple */
-    * { box-sizing: border-box; }
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.3; /* même interlignage partout */
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
+      overflow:hidden;
     }
 
-    .wrap {
-      min-height: 100%;
-      display: grid;
-      grid-template-rows: 1fr auto;
+    .page{
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      padding:4vh var(--side);
     }
 
-    main {
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      text-align: center;
-      gap: 16px;
+    .profil,
+    .contacts,
+    .links,
+    .email{
+      font-size:var(--size);
+      font-weight:800;
+      line-height:var(--lh);
+      color:var(--text); /* tout blanc */
     }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(20px, 2.4vw, 28px);
-      font-weight: 600;
-      letter-spacing: 0.2px;
+    /* === règles uniformes pour TOUS les liens === */
+    a{
+      color:var(--text);
+      text-decoration:none;
+      transition:color 0.3s ease;
+    }
+    a:hover{
+      color:var(--hover);
     }
 
-    p { margin: 0; color: var(--muted); }
-
-    /* GIF responsive */
-    .hero {
-      width: min(900px, 92vw);
-      height: auto;
-      display: block;
-      margin: 8px auto 0;
+    .gif-bg{
+      position:fixed;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:520px;
+      height:auto;
+      opacity:1;
+      z-index:-1;
+    }
+    .scrim{
+      position:fixed;
+      inset:0;
+      background:radial-gradient(120% 120% at 10% 15%, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.15) 100%);
+      z-index:-2;
     }
 
-    /* Liens : texte blanc, pas de soulignement
-       Hover : SEULEMENT un fin soulignement gris en overlay (pas de changement de couleur) */
-    .links {
-      display: flex;
-      gap: 18px;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 24px 16px 8px;
-    }
-
-    .links a {
-      color: var(--fg);
-      text-decoration: none;
-      position: relative;
-      padding-bottom: 2px;
-      line-height: 1.3;
-    }
-
-    .links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 1px;
-      background: transparent; /* invisible par défaut */
-      transition: background 160ms ease;
-    }
-
-    .links a:hover::after,
-    .links a:focus-visible::after {
-      background: var(--link-underline); /* léger gris en overlay */
-    }
-
-    footer {
-      padding: 16px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 12px;
+    @media (max-width:700px){
+      :root{
+        --side:5vw;
+        --gap-blocks:6vh;
+        --size:clamp(24px, 9vw, 64px);
+      }
+      .gif-bg{ width:320px; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <main>
-      <h1>Laurène Ryckebusch — Direction artistique</h1>
-      <p>Portfolio — sélection de projets</p>
+  <img class="gif-bg" src="assets/loop.gif" alt="project preview" aria-hidden="true" />
+  <div class="scrim" aria-hidden="true"></div>
 
-      <!-- Place ton GIF à la racine du dépôt, nom exact : loop.gif -->
-      <img class="hero" src="loop.gif" alt="Animation d’accueil">
+  <main class="page">
+    <section class="profil">
+      Laurène Ryckebusch
+      is a  graphic designer based in
+      Paris.<br>
+      ➔ Currently at <a href="https://leroytremblot.com/fr/" target="_blank" rel="noopener">LEROY TREMBLOT</a>
+    </section>
 
-      <nav class="links" aria-label="Liens externes">
-        <a href="https://leroytremblot.com/fr/" target="_blank" rel="noopener">Leroy&nbsp;Tremblot</a>
-        <a href="https://www.behance.net/laureneryckebu" target="_blank" rel="noopener">Behance</a>
-        <a href="https://www.instagram.com/laureneryckebusch/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.linkedin.com/in/laurene-ryckebusch/" target="_blank" rel="noopener">LinkedIn</a>
-      </nav>
-    </main>
+    <section class="contacts">
+      <div class="links">
+        <a href="https://www.instagram.com/laureneryckebusch/" target="_blank" rel="noopener">Instagram</a> /
+        <a href="https://www.behance.net/laureneryckebu" target="_blank" rel="noopener">Behance</a><br>
+        <a href="https://www.linkedin.com/in/laurene-ryckebusch/" target="_blank" rel="noopener">Linkedin</a>
+      </div>
+      <a class="email" href="mailto:laurene.ryckebusch@gmail.com">laurene.ryckebusch@gmail.com</a>
+    </section>
+  </main>
 
-    <footer>
-      © <span id="y"></span> Laurène Ryckebusch — Tous droits réservés
-    </footer>
-  </div>
-
-  <script>
-    // Année auto pour le footer
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
